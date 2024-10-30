@@ -11,6 +11,8 @@
 #import "VLToast.h"
 #import "VLOnLineListVC.h"
 #import "AgoraEntScenarios-Swift.h"
+#import <AgoraCommon/AgoraCommon-Swift.h>
+#import "DreamFlow/DreamFlow-Swift.h"
 
 @interface VLHomeViewController ()<VLHomeViewDelegate>
 
@@ -68,30 +70,34 @@
 
 
 - (void)itemClickAction:(int)tagValue {
-    NSArray* sceneNames = @[@"LiveShow", @"E-Commerce", @"VoiceChat", @"KTV"];
+    NSArray* sceneNames = @[@"Stylize"];
     [[NetworkManager shared] reportSceneClickWithSceneName:sceneNames[tagValue]];
     [[NetworkManager shared] reportDeviceInfoWithSceneName:sceneNames[tagValue]];
     [[NetworkManager shared] reportUserBehaviorWithSceneName:sceneNames[tagValue]];
 
     switch (tagValue) {
+//        case 0: {
+//            ShowRoomListVC *vc = [ShowRoomListVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case 1: {
+//            CommerceRoomListVC *vc = [CommerceRoomListVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case 2: {
+//            VRRoomsViewController *vc = [[VRRoomsViewController alloc] initWithUser:VLUserCenter.user];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case 3: {
+//            VLOnLineListVC *vc = [[VLOnLineListVC alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
         case 0: {
-            ShowRoomListVC *vc = [ShowRoomListVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 1: {
-            CommerceRoomListVC *vc = [CommerceRoomListVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 2: {
-            VRRoomsViewController *vc = [[VRRoomsViewController alloc] initWithUser:VLUserCenter.user];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 3: {
-            VLOnLineListVC *vc = [[VLOnLineListVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            [AppContext dreamFlowSceneWithViewController:self];
             break;
         }
         default: break;
